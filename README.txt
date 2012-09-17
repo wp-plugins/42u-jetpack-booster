@@ -39,6 +39,9 @@ You betcha.
 
 == Changelog ==
 
+= 1.1 =
+* Documentation updates.
+
 = 1.0 =
 * Initial release.
 
