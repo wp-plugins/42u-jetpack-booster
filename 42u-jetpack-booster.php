@@ -139,6 +139,17 @@ class _42UJETPACK_BOOSTER {
                 The 42U Jetpack Booster adds redirect tags and HTML email templates to Jetpack
              </p>
              
+             <h3>
+                Setting a redirect.
+            </h3>
+            
+            <p>
+            To add a redirect after your form is submitted, add the following line to the HTML view of your form: <br/>
+            [contact&ndash;field label="redirect" type="hidden" default="/thanks/" /] <br/>
+            Set the <em>default</em> value to the location where you would like the form to redirect after submission.
+            </p>
+            
+             
             <form method="POST" action="options.php" enctype="multipart/form-data">
                 
                 <?php settings_fields('ftu_jetpack_booster_options'); ?>
