@@ -5,7 +5,7 @@ Plugin URI: http://www.42umbrellas.com/42u-jetpack-booster/
 Description: The 42U Jetpack Booster adds redirect tags and HTML email templates to Jetpack Contact Forms
 Author: Rick Bush | 42U
 Author URI: http://www.42umbrellas.com/author/rick/
-Version: 1.0
+Version: 1.1
 License: GPLv2 or later
 
 Copyright (c) 2012 42Umbrellas (http://www.42umbrellas.com)
@@ -140,7 +140,7 @@ class _42UJETPACK_BOOSTER {
              </p>
              
              <h3>
-                Setting a redirect.
+                Setting A Redirect
             </h3>
             
             <table class="form-table">
@@ -168,7 +168,7 @@ class _42UJETPACK_BOOSTER {
                 <table class="form-table">
                     <tbody>
                         <tr valign="top">
-                            <th scope="row">You can use these variables in your template</th>
+                            <th scope="row">You can use these variables in your template.</th>
                             <td>
                                     <p>Subject: !!!EMAIL_SUBJECT!!!</p>
                                     <p>Body: !!!EMAIL_BODY!!!</p>
