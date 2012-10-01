@@ -5,7 +5,7 @@ Plugin URI: http://www.42umbrellas.com/42u-jetpack-booster/
 Description: The 42U Jetpack Booster adds redirect tags and HTML email templates to Jetpack Contact Forms
 Author: Rick Bush | 42U
 Author URI: http://www.42umbrellas.com/author/rick/
-Version: 1.2
+Version: 1.3
 License: GPLv2 or later
 
 Copyright (c) 2012 42Umbrellas (http://www.42umbrellas.com)
@@ -118,6 +118,9 @@ class _42UJETPACK_BOOSTER {
         /* Register our scripts. */
         wp_register_style( 'JetpackBoosterStylesheet', plugins_url('css/jetpack-booster.css', __FILE__) );
         wp_enqueue_style( 'JetpackBoosterStylesheet' );
+        
+        wp_register_script( 'JetpackBooster', plugins_url('js/booster.js', __FILE__,array('jquery')) );
+        wp_enqueue_script( 'JetpackBooster' );
     }
     
     public function admin_script_init_42U() {
@@ -147,11 +150,18 @@ class _42UJETPACK_BOOSTER {
             <table class="form-table">
                 <tbody>
                     <tr valign="top">
-                        <th scope="row">Add this line to the HTML view of your form. <br/>
-                                        Set the <em>default</em> value to the location where you would like the form to redirect after submission.
+                        <th scope="row">
+                        
+To add a redirect to your Jetpack Contact Form, just add a text field named "redirect" to your form. It will be hidden on display. <br/>
+
+From the HTML view,  set the <em>default</em> value to the location where you would like the form to redirect after submission. <br/>
+
+<strong>Note:</strong> you must replace the default <em>each</em> time after editing the form with the Jetpack WYSIWYG editor. The value is not saved by Jetpack.
+        
+                                       
                         </th>
                         <td>
-                                <p>[contact-field label="redirect" type="hidden" default="/thanks/" /]</p>
+                                <p>[contact-field label="redirect" type="text" default="/thanks/" /]</p>
                         </td>
                     </tr>
                 </tbody>
