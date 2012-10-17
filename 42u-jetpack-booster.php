@@ -5,7 +5,7 @@ Plugin URI: http://www.42umbrellas.com/42u-jetpack-booster/
 Description: The 42U Jetpack Booster adds redirect tags and HTML email templates to Jetpack Contact Forms
 Author: Rick Bush | 42U
 Author URI: http://www.42umbrellas.com/author/rick/
-Version: 1.3
+Version: 1.3.1
 License: GPLv2 or later
 
 Copyright (c) 2012 42Umbrellas (http://www.42umbrellas.com)
@@ -119,7 +119,7 @@ class _42UJETPACK_BOOSTER {
         wp_register_style( 'JetpackBoosterStylesheet', plugins_url('css/jetpack-booster.css', __FILE__) );
         wp_enqueue_style( 'JetpackBoosterStylesheet' );
         
-        wp_register_script( 'JetpackBooster', plugins_url('js/booster.js', __FILE__,array('jquery')) );
+        wp_register_script( 'JetpackBooster', plugins_url('js/booster.js', __FILE__),array('jquery'),false,true);
         wp_enqueue_script( 'JetpackBooster' );
     }
     

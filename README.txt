@@ -50,6 +50,9 @@ You betcha.
 
 == Changelog ==
 
+= 1.3.1 =
+* Moved scripts into the footer. 
+
 = 1.3 =
 * Revised the method to add a redirect. This method is backwards compatible with earlier releases. Documentation updates. CSS update. 
 
