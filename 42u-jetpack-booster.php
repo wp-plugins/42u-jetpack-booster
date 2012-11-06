@@ -5,7 +5,7 @@ Plugin URI: http://www.42umbrellas.com/42u-jetpack-booster/
 Description: The 42U Jetpack Booster adds redirect tags and HTML email templates to Jetpack Contact Forms
 Author: Rick Bush | 42U
 Author URI: http://www.42umbrellas.com/author/rick/
-Version: 1.3.1
+Version: 1.3.2
 License: GPLv2 or later
 
 Copyright (c) 2012 42Umbrellas (http://www.42umbrellas.com)
@@ -84,15 +84,30 @@ class _42UJETPACK_BOOSTER {
 		add_action('admin_enqueue_scripts', array($this,'admin_script_init_42U'));
         add_action('admin_menu', array($this,'register_42U_page'));  
         
-        /* set up our redirect */
-        add_action('wp_footer', array($this, 'contact_form_redirect'),100);
+        /* */
+        add_action( 'grunion_pre_message_sent', array($this, 'set_redirect'),100,3);
         
         /* filters */
-        
+                
         /* filter to make our mail from jetpack pretty */
 		add_filter('wp_mail', array($this,'wp_mail_hook'));
 		
+		/* set up our redirect */
+        add_filter('grunion_contact_form_redirect_url', array($this, 'contact_form_redirect'));
+		
     }
+    
+    public function set_redirect($post_id, $all_values, $extra_values) {
+        global $JETTPACKBOOSTER_REDIRECT;
+        
+        foreach ( (array) $all_values as $all_key => $all_value ) {        
+            $match = preg_match('/redirect/', $all_key);
+            if ($match === 1) {
+                 $JETTPACKBOOSTER_REDIRECT = $all_value;
+            }
+        }
+    }
+    
     
     public function register_42U_page() {
         
@@ -251,7 +266,7 @@ From the HTML view,  set the <em>default</em> value to the location where you wo
     public function contact_form_redirect() {
         global $JETTPACKBOOSTER_REDIRECT;
         if ($JETTPACKBOOSTER_REDIRECT) {
-            echo("<script>window.location='$JETTPACKBOOSTER_REDIRECT';</script>");
+            return $JETTPACKBOOSTER_REDIRECT;
         }
     }
     
@@ -261,21 +276,14 @@ From the HTML view,  set the <em>default</em> value to the location where you wo
         
         global $post;
         
-        global $contact_form_fields, $grunion_form, $JETTPACKBOOSTER_REDIRECT;
+        global $JETTPACKBOOSTER_REDIRECT;
         
         $jetpack = new Theme_Plugin_Dependency( 'jetpack', 'http://wordpress.org/extend/plugins/jetpack/' );
         if ( $jetpack->check_active() ) {
             $this->has_jetpack = true;
         }
         
-        if( $this->has_jetpack && $contact_form_fields) {
-            
-            foreach ($contact_form_fields as $v) {
-                $match = preg_match('/redirect/', $v['id']);
-                if ($match === 1) {
-                     $JETTPACKBOOSTER_REDIRECT = $v['default'];
-                }
-            }
+        if( $this->has_jetpack && $JETTPACKBOOSTER_REDIRECT) {
 
             if ($this->options['disable_HTMLemail']) {
                 

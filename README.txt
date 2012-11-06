@@ -3,7 +3,7 @@ Contributors: 42urick
 Tags: jetpack
 Requires at least: 3.0
 Tested up to: 3.4.2
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,9 @@ You betcha.
 
 == Changelog ==
 
+= 1.3.2 =
+* Modified redirect method to hook into grunion filters and actions. REQUIRES Jetpack 1.9.2 or later!
+
 = 1.3.1 =
 * Moved scripts into the footer. 
 
@@ -67,4 +70,4 @@ You betcha.
 
 
 == Upgrade Notice ==
-* none
+* REQUIRES Jetpack 1.9.2 or later!
